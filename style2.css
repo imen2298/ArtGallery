@@ -1,0 +1,293 @@
+/* =========================
+   SHOP PAGE
+========================= */
+
+.shop {
+  padding: 10rem 8%;
+  overflow: hidden;
+}
+
+/* =========================
+   SHOP INTRO
+========================= */
+
+.shop-intro {
+  margin-bottom: 6rem;
+}
+
+.shop-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 5rem;
+}
+
+.shop-heading h1 {
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 0.9;
+
+  color: #222;
+}
+
+.shop-heading h1 em {
+  font-family: Georgia, serif;
+  color: #87123b;
+  font-weight: 400;
+}
+
+.shop-heading > p {
+  max-width: 350px;
+
+  font-size: 0.85rem;
+  line-height: 1.7;
+
+  color: #666;
+}
+
+/* =========================
+   FILTER
+========================= */
+
+.shop-filter {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 1.5rem;
+
+  border-bottom: 1px solid rgba(135, 18, 59, 0.3);
+
+  padding-bottom: 1rem;
+
+  margin-bottom: 5rem;
+}
+
+.shop-filter button {
+  border: none;
+  background: none;
+
+  font-family: inherit;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.12rem;
+
+  color: #777;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.shop-filter button:hover,
+.shop-filter button.active {
+  color: #87123b;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  column-gap: 4rem;
+  row-gap: 8rem;
+
+  align-items: start;
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product-card {
+  min-width: 0;
+}
+
+.product-offset {
+  margin-top: 8rem;
+}
+
+.product-offset-small {
+  margin-top: 5rem;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.product-image {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 1rem;
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.product-image img {
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.7s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.04);
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.available,
+.sold {
+  position: absolute;
+
+  top: 1rem;
+  left: 1rem;
+
+  padding: 0.4rem 0.7rem;
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.12rem;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border-radius: 2rem;
+}
+
+.available {
+  color: #87123b;
+}
+
+.sold {
+  color: #777;
+}
+
+/* =========================
+   PRODUCT INFO
+========================= */
+
+.product-info {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  padding-top: 1.2rem;
+}
+
+.product-category {
+  font-size: 0.6rem;
+
+  letter-spacing: 0.15rem;
+
+  color: #87123b;
+}
+
+.product-info h2 {
+  font-size: 1.2rem;
+
+  font-weight: 400;
+
+  margin: 0.4rem 0;
+}
+
+.product-info p {
+  font-size: 0.65rem;
+
+  color: #777;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.product-price {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.product-price > span {
+  font-size: 0.9rem;
+
+  white-space: nowrap;
+}
+
+.product-price button {
+  width: 2.2rem;
+  height: 2.2rem;
+
+  border: 1px solid #87123b;
+
+  background: transparent;
+
+  color: #87123b;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.product-price button:hover {
+  background: #87123b;
+
+  color: white;
+
+  transform: rotate(45deg);
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart {
+  position: relative;
+
+  color: #222;
+
+  font-size: 1rem;
+}
+
+.cart span {
+  position: absolute;
+
+  top: -0.6rem;
+  right: -0.7rem;
+
+  width: 1rem;
+  height: 1rem;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #87123b;
+
+  color: white;
+
+  font-size: 0.5rem;
+}

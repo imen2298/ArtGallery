@@ -7,6 +7,16 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
+    <!-- LOADING SCREEN -->
+   <div class="loader">
+     <div class="loader-content">
+        <div class="loader-title">ART CLASSIC</div>
+        <div class="loader-line">
+            <span></span>
+        </div>
+        <p>Loading...</p>
+     </div>
+   </div>
     <header class="header">
         <nav class="navbar">
         <a href="#" class="logo">ART CLASSIC</a>
@@ -24,14 +34,12 @@
     <!-- NOUVEL ÉCRAN D'ACCUEIL -->
 
 <section class="intro-screen">
-
-    <img src="home-image.jpg" alt="Art Classic">
+    <canvas id="paintCanvas"></canvas>
 
     <div class="intro-content">
         <p>IMANE BOUNAAS</p>
-        <h1>ART CLASSIC</h1>
+        <span>PAINTING / ILLUSTRATION / CREATIVITY</span>
     </div>
-
 </section>
     <section class="hero">
         <div class="hero-text">
@@ -41,7 +49,7 @@
             <a href="#projects" class="hero-btn">Explore the gallery</a>
         </div>
         <div class="hero-image">
-            <img src="imenart3.svg" alt="Hero Image">
+            <img src="images/imenart3.svg" alt="Hero Image">
         </div>
        
     </section>
@@ -54,32 +62,32 @@
         </div>
     <section class="gallery">
         <div class="child" id="c-1">
-            <img src="oeuvre6.svg" alt="Hero Image">
+            <img src="images/oeuvre6.svg" alt="Hero Image">
             <h3>ACRYLIC PAINTING</h3>
             <p>Color, texture & emotion.</p>
         </div>
         <div class="child" id="c-2">
-            <img src="PORTRAIT&.svg" alt="Hero Image">
+            <img src="images/PORTRAIT&.svg" alt="Hero Image">
              <h3>PORTRAIT</h3>
             <p>Faces, emotions & identity.</p>
         </div>
         <div class="child" id="c-3">
-            <img src="oeuvre10.svg" alt="Hero Image">
+            <img src="images/oeuvre10.svg" alt="Hero Image">
                 <h3>WATERCOLOR</h3>
                 <p>Light, color & delicate expressions.</p>
             </div>
         <div class="child" id="c-4">
-            <img src="oeuvre8-II.svg" alt="Hero Image">
+            <img src="images/oeuvre8-II.svg" alt="Hero Image">
             <h3>NATURE</h3>
             <p>Organic forms, textures & quiet moments.</p>
         </div>
         <div class="child" id="c-5">
-            <img src="venise.svg" alt="Hero Image">
+            <img src="images/venise.svg" alt="Hero Image">
             <h3>Cityscapes</h3>
             <p>Light, atmosphere & distant horizons.</p>
         </div>
         <div class="child" id="c-6">
-            <img src="oeuvre5.svg" alt="Hero Image">
+            <img src="images/oeuvre5.svg" alt="Hero Image">
             <h3>URBAN SKETCHING</h3>
             <p>Everyday scenes, drawn from life.</p>
         </div>
@@ -110,7 +118,7 @@
             </a>
           </div>
          <div class="about-image">
-            <img src="imenart2.svg" alt="Imane Bounaаs">
+            <img src="images/imenart2.svg" alt="Imane Bounaаs">
          </div>
         </div>
     </div>
@@ -283,21 +291,267 @@
 
 const header = document.querySelector(".header");
 
-window.addEventListener("scroll", () => {
+function updateNavbar() {
 
     const scroll = window.scrollY;
+    const screenHeight = window.innerHeight;
 
-    if (scroll >= window.innerHeight - 85) {
+    // Le Hero est remonté de 300px
+    const heroOffset = 300;
 
-        header.classList.add("navbar-fixed");
+    // La navbar arrive en haut 300px plus tôt
+    if (scroll < screenHeight - heroOffset) {
+
+        const top = screenHeight - 350 - scroll;
+
+        header.style.top = `${top}px`;
 
     } else {
 
-        header.classList.remove("navbar-fixed");
+        header.style.top = "0px";
+    }
+}
+
+window.addEventListener("scroll", updateNavbar);
+window.addEventListener("resize", updateNavbar);
+
+updateNavbar();
+
+</script>
+<script>
+
+const hero = document.querySelector(".hero");
+
+const heroObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+                hero.classList.add("show");
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.25
+    }
+);
+
+heroObserver.observe(hero);
+
+</script>
+<script>
+
+window.addEventListener("load", function () {
+
+    const loader = document.querySelector(".loader");
+
+    setTimeout(() => {
+        loader.classList.add("loaded");
+    }, 2500);
+
+});
+
+</script>
+<script>
+
+const canvas = document.getElementById("paintCanvas");
+const ctx = canvas.getContext("2d");
+
+let width;
+let height;
+
+function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+
+/* =========================
+   COULEURS DE PEINTURE
+========================= */
+
+const colors = [
+    "#4a1730",
+    "#681f3b",
+    "#8d304d",
+    "#b34f65",
+    "#c96f78",
+    "#d89589",
+    "#e2aa96",
+    "#734456",
+    "#963e58",
+    "#54233d"
+];
+
+
+/* =========================
+   PINCEAUX
+========================= */
+
+const brushes = [];
+
+for (let i = 0; i < 35; i++) {
+
+    brushes.push({
+
+        x: Math.random() * width,
+        y: Math.random() * height,
+
+        length: 150 + Math.random() * 350,
+
+        thickness: 15 + Math.random() * 45,
+
+        angle:
+            (Math.random() - 0.5) * Math.PI,
+
+        color:
+            colors[Math.floor(Math.random() * colors.length)],
+
+        opacity:
+            0.25 + Math.random() * 0.35,
+
+        speed:
+            0.0002 + Math.random() * 0.0005,
+
+        phase:
+            Math.random() * Math.PI * 2
+
+    });
+
+}
+
+
+/* =========================
+   PINCEAU IRRÉGULIER
+========================= */
+
+function drawBrush(brush, time) {
+
+    ctx.save();
+
+    ctx.translate(brush.x, brush.y);
+
+    ctx.rotate(brush.angle);
+
+
+    ctx.beginPath();
+
+    const points = 18;
+
+    for (let i = 0; i <= points; i++) {
+
+        const progress = i / points;
+
+        const x =
+            -brush.length / 2 +
+            brush.length * progress;
+
+        const irregular =
+            Math.sin(
+                progress * 15 +
+                brush.phase
+            ) * 8;
+
+        const y =
+            -brush.thickness / 2 +
+            irregular;
+
+        if (i === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
 
     }
 
-});
+
+    for (let i = points; i >= 0; i--) {
+
+        const progress = i / points;
+
+        const x =
+            -brush.length / 2 +
+            brush.length * progress;
+
+        const irregular =
+            Math.cos(
+                progress * 12 +
+                brush.phase
+            ) * 7;
+
+        const y =
+            brush.thickness / 2 +
+            irregular;
+
+        ctx.lineTo(x, y);
+
+    }
+
+
+    ctx.closePath();
+
+    ctx.fillStyle = brush.color;
+
+    ctx.globalAlpha = brush.opacity;
+
+    ctx.filter = "blur(1px)";
+
+    ctx.fill();
+
+    ctx.restore();
+
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+function animate(time) {
+
+    ctx.clearRect(0, 0, width, height);
+
+    brushes.forEach(brush => {
+
+        /*
+        Mouvement très doux
+        */
+
+        brush.x +=
+            Math.cos(time * brush.speed + brush.phase)
+            * 0.15;
+
+        brush.y +=
+            Math.sin(time * brush.speed + brush.phase)
+            * 0.10;
+
+        /*
+        Légère rotation
+        */
+
+        brush.angle +=
+            Math.sin(time * 0.0002 + brush.phase)
+            * 0.00005;
+
+        /*
+        Dessiner
+        */
+
+        drawBrush(brush, time);
+
+    });
+
+    requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
 
 </script>
 </body>
