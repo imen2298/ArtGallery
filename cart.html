@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <title>Cart | Art Classic</title>
+</head>
+
+<body class="cart-page">
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                IMEN ART
+            </a>
+
+            <ul class="nav-link">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">About</a>
+                </li>
+
+                <li>
+                    <a href="index.html#projects">Works</a>
+                </li>
+
+                <li>
+                    <a href="shop.html">Shop</a>
+                </li>
+
+                <li>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+
+            </ul>
+
+            <a href="cart.html" class="cart">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span id="cart-count">
+                    0
+                </span>
+
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================================
+         CART
+    ================================= -->
+
+    <main class="cart-main">
+
+        <section class="cart-intro">
+
+            <div class="section-label">
+
+                
+
+                <p>
+                    YOUR SELECTION
+                </p>
+
+            </div>
+
+            <div class="cart-heading">
+
+                <h1>
+                    Your <em>cart.</em>
+                </h1>
+
+                <p>
+                    Review the artworks you have selected.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        
+<section class="cart-content">
+
+    <!-- Liste des œuvres dans le panier -->
+    <div id="cart-items">
+        <!-- JavaScript affiche les œuvres ici -->
+    </div>
+
+    <!-- Total de la commande -->
+    <div class="cart-summary">
+        <span>TOTAL</span>
+        <strong id="cart-total">0.00 €</strong>
+    </div>
+
+    <!-- Formulaire de commande -->
+    <section class="checkout-section">
+
+        <div class="checkout-header">
+            <span class="section-label">YOUR ORDER</span>
+            <h2>Delivery information</h2>
+            <p>Please fill in your details to place your order.</p>
+        </div>
+
+        <form id="checkout-form">
+
+            <div class="form-group">
+                <label for="customer-name">Full name *</label>
+                <input
+                    type="text"
+                    id="customer-name"
+                    name="customerName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customer-phone">Phone number *</label>
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    name="customerPhone"
+                    placeholder="Enter your phone number"
+                    autocomplete="tel"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customer-address">Delivery address *</label>
+                <textarea
+                    id="customer-address"
+                    name="customerAddress"
+                    placeholder="Enter your full delivery address"
+                    rows="3"
+                    autocomplete="street-address"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="customer-notes">Additional notes (optional)</label>
+                <textarea
+                    id="customer-notes"
+                    name="notes"
+                    placeholder="Any additional information about your order?"
+                    rows="3"
+                ></textarea>
+            </div>
+
+            <button type="submit" id="place-order-btn">
+                Place order
+            </button>
+
+        </form>
+
+    </section>
+
+</section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div>
+
+                <span>
+                    LET'S CONNECT
+                </span>
+
+                <h2>
+                    Let's talk<br>
+                    about art.
+                </h2>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#" class="social-link">
+
+                    <span>
+                        <i class="fa-brands fa-instagram"></i>
+                        Instagram
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="social-link">
+
+                    <span>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="social-link">
+
+                    <span>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        LinkedIn
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 ART CLASSIC
+            </p>
+
+            <p>
+                IMANE BOUNAAS · ARTIST
+            </p>
+
+        </div>
+
+    </footer>
+
+   <script src="cart.js"></script>
+    <script>
+
+        const header = document.querySelector(".header");
+
+        if (header) {
+            header.style.top = "20px";
+        }
+
+    </script>
+ 
+</body>
+
+
+</html>

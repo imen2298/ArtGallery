@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | IMEN ART</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            IMEN <span>ART</span>
+        </div>
+
+        <nav>
+
+            <button class="nav-item active" data-section="overview">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Overview</span>
+            </button>
+
+            <button class="nav-item" data-section="artworks">
+                <i class="fa-solid fa-palette"></i>
+                <span>Œuvres</span>
+            </button>
+
+            <button class="nav-item" data-section="orders">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Commandes</span>
+            </button>
+
+            <button class="nav-item" data-section="sales">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Ventes</span>
+            </button>
+
+            <button class="nav-item" data-section="notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notification-count">3</span>
+            </button>
+
+            <button class="nav-item" data-section="activity">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Historique</span>
+            </button>
+
+            <button class="nav-item" data-section="settings">
+                <i class="fa-solid fa-gear"></i>
+                <span>Paramètres</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="nav-item logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Déconnexion</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="dashboard-header">
+
+            <div>
+                <p class="welcome">Bienvenue</p>
+                <h1>Dashboard</h1>
+            </div>
+
+            <div class="header-right">
+
+                <button class="notification-button">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>3</span>
+                </button>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        I
+                    </div>
+
+                    <div>
+                        <strong>Imen</strong>
+                        <small>Administrateur</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================= -->
+        <!-- OVERVIEW -->
+        <!-- ========================= -->
+
+        <section id="overview" class="dashboard-section active">
+
+            <div class="section-title">
+                <div>
+                    <h2>Vue d'ensemble</h2>
+                    <p>Gérez votre galerie et vos commandes.</p>
+                </div>
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+
+                    <div>
+                        <span>Œuvres</span>
+                        <strong id="total-artworks">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+
+                    <div>
+                        <span>Commandes</span>
+                        <strong id="total-orders">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-euro-sign"></i>
+                    </div>
+
+                    <div>
+                        <span>Ventes</span>
+                        <strong id="total-sales">0 €</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Disponibles</span>
+                        <strong id="available-artworks">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Actions rapides</h3>
+                            <p>Gérer rapidement votre galerie.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="quick-actions">
+
+                        <button class="quick-action"
+                                onclick="showSection('artworks')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            <span>
+                                Ajouter une œuvre
+                            </span>
+
+                        </button>
+
+
+                        <button class="quick-action"
+                                onclick="showSection('orders')">
+
+                            <i class="fa-solid fa-bag-shopping"></i>
+
+                            <span>
+                                Voir les commandes
+                            </span>
+
+                        </button>
+
+
+                        <button class="quick-action"
+                                onclick="showSection('notifications')">
+
+                            <i class="fa-solid fa-bell"></i>
+
+                            <span>
+                                Notifications
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT ORDERS -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Commandes récentes</h3>
+                            <p>Dernières commandes reçues.</p>
+                        </div>
+
+                        <button onclick="showSection('orders')">
+                            Voir tout
+                        </button>
+
+                    </div>
+
+                    <div id="recent-orders">
+
+                        <p class="empty-message">
+                            Aucune commande pour le moment.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- ARTWORKS -->
+        <!-- ========================= -->
+
+        <section id="artworks" class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Mes œuvres</h2>
+                    <p>Gérez vos peintures et leurs informations.</p>
+                </div>
+
+                <button class="primary-button"
+                        id="add-artwork-button">
+
+                    <i class="fa-solid fa-plus"></i>
+                    Ajouter une œuvre
+
+                </button>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="table-tools">
+
+                    <input
+                        type="text"
+                        id="artwork-search"
+                        placeholder="Rechercher une œuvre..."
+                    >
+
+                    <select id="artwork-status-filter">
+
+                        <option value="ALL">
+                            Tous les statuts
+                        </option>
+
+                        <option value="AVAILABLE">
+                            Disponible
+                        </option>
+
+                        <option value="RESERVED">
+                            Réservée
+                        </option>
+
+                        <option value="SOLD">
+                            Vendue
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Photo</th>
+                                <th>Œuvre</th>
+                                <th>Catégorie</th>
+                                <th>Prix</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="artworks-table">
+
+                            <!-- Les œuvres seront ajoutées par JS -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- ORDERS -->
+        <!-- ========================= -->
+
+        <section id="orders" class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Commandes</h2>
+                    <p>Commandes reçues depuis votre Shop.</p>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="table-tools">
+
+                    <input
+                        type="text"
+                        id="order-search"
+                        placeholder="Rechercher un client..."
+                    >
+
+                   
+                 <select id="order-status-filter">
+                    <option value="ALL">Tous les statuts</option>
+                    <option value="pending">En attente</option>
+                    <option value="confirmed">Confirmée</option>
+                    <option value="shipped">Expédiée</option>
+                    <option value="delivered">Livrée</option>
+                 <option value="cancelled">Annulée</option>
+                </select>
+
+
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Client</th>
+                                <th>Œuvres</th>
+                                <th>Total</th>
+                                <th>Date</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="orders-table">
+
+                            <!-- Commandes générées par JS -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- SALES -->
+        <!-- ========================= -->
+
+        <section id="sales" class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Ventes</h2>
+                    <p>Suivez les ventes de vos œuvres.</p>
+                </div>
+
+            </div>
+
+
+            <div class="sales-card">
+
+                <div class="sales-number">
+                    0 €
+                </div>
+
+                <p>Total des ventes</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- NOTIFICATIONS -->
+        <!-- ========================= -->
+
+        <section id="notifications" class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Notifications</h2>
+                    <p>Les dernières activités de votre boutique.</p>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="notification-item">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    <div>
+                        <strong>Nouvelle commande</strong>
+                        <p>
+                            Vous recevrez ici les nouvelles commandes.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- ACTIVITY -->
+        <!-- ========================= -->
+
+        <section id="activity" class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Historique</h2>
+                    <p>Historique des actions effectuées.</p>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div id="activity-list">
+
+                    <p class="empty-message">
+                        Aucun historique pour le moment.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- SETTINGS -->
+        <!-- ========================= -->
+
+        <section id="settings" class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Paramètres</h2>
+                    <p>Gérez les informations de votre boutique.</p>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card settings-card">
+
+                <h3>Informations de contact</h3>
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    placeholder="votre@email.com"
+                >
+
+
+                <label>Téléphone</label>
+
+                <input
+                    type="text"
+                    placeholder="+213 ..."
+                >
+
+
+                <label>Instagram</label>
+
+                <input
+                    type="text"
+                    placeholder="@imenart"
+                >
+
+
+                <button class="primary-button">
+                    Enregistrer
+                </button>
+
+            </div>
+
+        </section>
+        <!-- ================================
+     MODAL AJOUTER UNE ŒUVRE
+================================ -->
+
+<div class="modal" id="artwork-modal">
+
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-label" id="artwork-modal-label">NOUVELLE ŒUVRE</span>
+                <h2 id="artwork-modal-title">Ajouter une œuvre</h2>
+                <p>Ajoutez une nouvelle œuvre à votre collection.</p>
+            </div>
+
+            <button type="button" class="modal-close" id="close-artwork-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form id="artwork-form">
+            <input type="hidden" id="artwork-id">
+            <div class="form-group">
+                <label for="artwork-image">Image</label>
+
+                <input
+                    type="file"
+                    id="artwork-image"
+                    name="image"
+                    accept="image/*"
+                    required
+                >
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="artwork-title">Titre</label>
+
+                    <input
+                        type="text"
+                        id="artwork-title"
+                        name="title"
+                        placeholder="Ex. Silent Face"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-category">Catégorie</label>
+
+                    <input
+                        type="text"
+                        id="artwork-category"
+                        name="category"
+                        placeholder="Ex. PORTRAIT"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="artwork-description">Description</label>
+
+                <textarea
+                    id="artwork-description"
+                    name="description"
+                    placeholder="Ex. Acrylic on canvas"
+                    rows="3"
+                ></textarea>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="artwork-dimensions">Dimensions</label>
+
+                    <input
+                        type="text"
+                        id="artwork-dimensions"
+                        name="dimensions"
+                        placeholder="Ex. 40 × 50 cm"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-price">Prix (€)</label>
+
+                    <input
+                        type="number"
+                        id="artwork-price"
+                        name="price"
+                        placeholder="Ex. 90"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="artwork-status">Statut</label>
+
+                <select
+                    id="artwork-status"
+                    name="status"
+                    required
+                >
+                    <option value="available">Disponible</option>
+                    <option value="sold">Vendue</option>
+                </select>
+            </div>
+
+            <p id="artwork-form-message"></p>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancel-artwork"
+                >
+                    Annuler
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="artwork-submit-button"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    Ajouter l'œuvre
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- MODAL DÉTAILS D'UNE COMMANDE -->
+
+<div class="modal" id="order-details-modal">
+
+    <div class="modal-overlay" id="order-details-overlay"></div>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-label">INFORMATIONS CLIENT</span>
+                <h2>Détails de la commande</h2>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="close-order-details"
+                aria-label="Fermer"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="order-details-content">
+            <p>Chargement des détails...</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

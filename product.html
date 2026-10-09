@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <title>Artwork | Art Classic</title>
+</head>
+
+<body class="product-page">
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                IMEN ART
+            </a>
+
+            <ul class="nav-link">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">About</a>
+                </li>
+
+                <li>
+                    <a href="index.html#projects">Works</a>
+                </li>
+
+                <li>
+                    <a href="shop.html" class="active">Shop</a>
+                </li>
+
+                <li>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+
+            </ul>
+
+            <!-- panier -->
+
+            <a href="cart.html" class="cart">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span id="cart-count">0</span>
+
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         PRODUCT
+    ========================== -->
+
+    <main class="product-detail">
+
+        <a href="shop.html" class="back-to-shop">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to shop
+        </a>
+
+        <section id="product-detail-container">
+
+            <!-- JavaScript ajoutera les informations de l'œuvre ici -->
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div>
+
+                <span>LET'S CONNECT</span>
+
+                <h2>
+                    Let's talk
+                    <br>
+                    about art.
+                </h2>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#" class="social-link">
+
+                    <span>
+                        <i class="fa-brands fa-instagram"></i>
+                        Instagram
+                    </span>
+
+                    <span>↗</span>
+
+                </a>
+
+
+                <a href="#" class="social-link">
+
+                    <span>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp
+                    </span>
+
+                    <span>↗</span>
+
+                </a>
+
+
+                <a href="#" class="social-link">
+
+                    <span>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        LinkedIn
+                    </span>
+
+                    <span>↗</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 ART CLASSIC
+            </p>
+
+            <p>
+                IMANE BOUNAAS · ARTIST
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="product.js"></script>
+
+    <script>
+
+        const header = document.querySelector(".header");
+
+        if (header) {
+            header.style.top = "20px";
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IMEN ART - Connexion</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <section class="login-image">
+            <img src="art1.jpg" alt="Œuvre d'art">
+
+            <div class="image-overlay"></div>
+
+            <div class="art-title">
+                <h2>IMEN ART</h2>
+                <p>Art · Painting · Creation</p>
+            </div>
+        </section>
+
+
+        <section class="login-content">
+
+            <div class="login-box">
+
+                <div class="brand">
+                    <h1>IMEN ART</h1>
+                    <span>Administration</span>
+                </div>
+
+                <div class="login-heading">
+                    <h2>Bienvenue</h2>
+                    <p>
+                        Connectez-vous à votre espace
+                        d'administration.
+                    </p>
+                </div>
+
+                <form id="login-form">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        Se connecter
+                    </button>
+
+                </form>
+
+                <p id="message"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="login.js"></script>
+
+</body>
+</html>

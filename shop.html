@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style2.css">
     <!-- Font Awesome -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -14,7 +14,7 @@
     <title>Shop | Art Classic</title>
 </head>
 
-<body>
+<body class="shop-page">
 
     <!-- =========================
          NAVBAR
@@ -25,7 +25,7 @@
         <nav class="navbar">
 
             <a href="index.html" class="logo">
-                ART CLASSIC
+                IMEN ART
             </a>
 
             <ul class="nav-link">
@@ -53,9 +53,9 @@
             </ul>
 
             <!-- panier -->
-            <a href="#" class="cart">
+            <a href="cart.html" class="cart">
                 <i class="fa-solid fa-bag-shopping"></i>
-                <span>0</span>
+                <span id="cart-count">0</span>
             </a>
 
         </nav>
@@ -107,19 +107,19 @@
 
         <div class="shop-filter">
 
-            <button class="active">ALL</button>
+    <button class="active" data-category="all">ALL</button>
 
-            <button>ACRYLIC</button>
+    <button data-category="acrylic">ACRYLIC</button>
 
-            <button>PORTRAIT</button>
+    <button data-category="portrait">PORTRAIT</button>
 
-            <button>WATERCOLOR</button>
+    <button data-category="watercolor">WATERCOLOR</button>
 
-            <button>NATURE</button>
+    <button data-category="nature">NATURE</button>
 
-            <button>LANDSCAPE</button>
+    <button data-category="landscape">LANDSCAPE</button>
 
-            <button>URBAN SKETCHING</button>
+    <button data-category="urban sketching">URBAN SKETCHING</button>
 
         </div>
 
@@ -128,215 +128,10 @@
              PRODUCTS
         ========================== -->
 
-        <section class="products">
+        <section class="products" id="products-container">
 
-
-            <!-- ARTWORK 1 -->
-
-            <article class="product-card">
-
-                <div class="product-image">
-
-                    <img src="art1.jpg"
-                        alt="Acrylic painting">
-
-                    <span class="available">
-                        AVAILABLE
-                    </span>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <div>
-
-                        <span class="product-category">
-                            ACRYLIC PAINTING
-                        </span>
-
-                        <h2>
-                            Silent Colors
-                        </h2>
-
-                        <p>
-                            Acrylic on canvas · 50 × 70 cm
-                        </p>
-
-                    </div>
-
-
-                    <div class="product-price">
-
-                        <span>
-                            120 €
-                        </span>
-
-                        <button>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- ARTWORK 2 -->
-
-            <article class="product-card product-offset">
-
-                <div class="product-image">
-
-                    <img src="art2.jpg"
-                        alt="Portrait">
-
-                    <span class="available">
-                        AVAILABLE
-                    </span>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <div>
-
-                        <span class="product-category">
-                            PORTRAIT
-                        </span>
-
-                        <h2>
-                            Silent Face
-                        </h2>
-
-                        <p>
-                            Acrylic on canvas · 40 × 50 cm
-                        </p>
-
-                    </div>
-
-
-                    <div class="product-price">
-
-                        <span>
-                            90 €
-                        </span>
-
-                        <button>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- ARTWORK 3 -->
-
-            <article class="product-card">
-
-                <div class="product-image">
-
-                    <img src="art3.jpg"
-                        alt="Watercolor painting">
-
-                    <span class="available">
-                        AVAILABLE
-                    </span>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <div>
-
-                        <span class="product-category">
-                            WATERCOLOR
-                        </span>
-
-                        <h2>
-                            Morning Light
-                        </h2>
-
-                        <p>
-                            Watercolor · 30 × 40 cm
-                        </p>
-
-                    </div>
-
-
-                    <div class="product-price">
-
-                        <span>
-                            70 €
-                        </span>
-
-                        <button>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- ARTWORK 4 -->
-
-            <article class="product-card product-offset-small">
-
-                <div class="product-image">
-
-                    <img src="art4.jpg"
-                        alt="Landscape">
-
-                    <span class="sold">
-                        SOLD
-                    </span>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <div>
-
-                        <span class="product-category">
-                            LANDSCAPE
-                        </span>
-
-                        <h2>
-                            Distant Horizon
-                        </h2>
-
-                        <p>
-                            Acrylic on canvas · 60 × 80 cm
-                        </p>
-
-                    </div>
-
-
-                    <div class="product-price">
-
-                        <span>
-                            150 €
-                        </span>
-
-                        <button>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
+               <!-- JavaScript ajoutera les œuvres ici -->
+            
 
 
         </section>
@@ -421,6 +216,13 @@
         </div>
 
     </footer>
+<script src="shop.js"></script>
+<script>
+const header = document.querySelector(".header");
 
+if (header) {
+    header.style.top = "20px";
+}
+</script>
 </body>
 </html>
