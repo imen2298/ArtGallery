@@ -36,9 +36,9 @@ const Product = sequelize.define(
         },
 
         image: {
-            type: DataTypes.STRING(255),
-            allowNull: false
-        },
+          type: DataTypes.TEXT,
+          allowNull: false
+             },
 
         status: {
             type: DataTypes.ENUM("available", "sold"),

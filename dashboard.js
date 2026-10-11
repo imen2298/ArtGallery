@@ -616,7 +616,8 @@ function displayArtworks(products) {
         row.innerHTML = `
             <td>
                 <img
-                    src="http://localhost:5000/uploads/${escapeHTML(product.image)}"
+                    
+                    src="${escapeHTML(product.image)}"
                     alt="${escapeHTML(product.title)}"
                     style="
                         width: 55px;

@@ -73,7 +73,7 @@ function displayProducts(products) {
                 <div class="product-image">
 
                     <img
-                        src="http://localhost:5000/uploads/${product.image}"
+                        src="${product.image}"
                         alt="${product.title}"
                     >
 

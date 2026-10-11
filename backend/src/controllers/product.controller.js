@@ -1,6 +1,11 @@
 import * as productService from "../services/product.service.js";
+import supabase from "../config/supabase.js";
+import path from "path";
+
 
 export const createProduct = async (req, res) => {
+    let uploadedPath = null;
+
     try {
         const {
             title,
@@ -17,13 +22,32 @@ export const createProduct = async (req, res) => {
             });
         }
 
+        const extension = path.extname(req.file.originalname) || ".jpg";
+        const fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}${extension}`;
+        uploadedPath = fileName;
+
+        const { error: uploadError } = await supabase.storage
+            .from("artworks")
+            .upload(fileName, req.file.buffer, {
+                contentType: req.file.mimetype,
+                upsert: false
+            });
+
+        if (uploadError) {
+            throw uploadError;
+        }
+
+        const { data: publicUrlData } = supabase.storage
+            .from("artworks")
+            .getPublicUrl(fileName);
+
         const productData = {
             title,
             category,
             description,
             dimensions,
             price,
-            image: req.file.filename,
+            image: publicUrlData.publicUrl,
             status
         };
 
@@ -35,13 +59,16 @@ export const createProduct = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(
-            "Erreur lors de la création du produit :",
-            error
-        );
+        console.error("Erreur lors de la création du produit :", error);
+
+        if (uploadedPath) {
+            await supabase.storage
+                .from("artworks")
+                .remove([uploadedPath]);
+        }
 
         return res.status(500).json({
-            message: "Erreur interne du serveur."
+            message: "Erreur lors de la création du produit."
         });
     }
 };
@@ -87,12 +114,13 @@ export const getProductById = async (req, res) => {
 };
 
 
+
 export const updateProduct = async (req, res) => {
+    let uploadedPath = null;
+
     try {
         const { id } = req.params;
-        console.log("ID reçu :", id);
-        console.log("BODY reçu :", req.body);
-        console.log("FILE reçu :", req.file);
+
         const productData = {
             title: req.body.title,
             category: req.body.category,
@@ -102,39 +130,65 @@ export const updateProduct = async (req, res) => {
             status: req.body.status
         };
 
-        // Si une nouvelle image a été sélectionnée
         if (req.file) {
-            productData.image = req.file.filename;
+            const extension = path.extname(req.file.originalname) || ".jpg";
+            const fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}${extension}`;
+
+            uploadedPath = fileName;
+
+            const { error: uploadError } = await supabase.storage
+                .from("artworks")
+                .upload(fileName, req.file.buffer, {
+                    contentType: req.file.mimetype,
+                    upsert: false
+                });
+
+            if (uploadError) {
+                throw uploadError;
+            }
+
+            const { data: publicUrlData } = supabase.storage
+                .from("artworks")
+                .getPublicUrl(fileName);
+
+            productData.image = publicUrlData.publicUrl;
         }
 
-        const product = await productService.updateProduct(
-            id,
-            productData
-        );
+        const product = await productService.updateProduct(id, productData);
 
         if (!product) {
+            if (uploadedPath) {
+                await supabase.storage.from("artworks").remove([uploadedPath]);
+            }
+
             return res.status(404).json({
-                message: "Produit introuvable."
+                message: "Œuvre introuvable."
             });
         }
 
         return res.status(200).json({
-            message: "Produit modifié avec succès.",
+            message: "Œuvre modifiée avec succès.",
             product
         });
 
     } catch (error) {
-        console.error(
-            "Erreur lors de la modification du produit :",
-            error
-        );
+        console.error("Erreur lors de la modification de l’œuvre :", error);
+
+        if (uploadedPath) {
+            const { error: removeError } = await supabase.storage
+                .from("artworks")
+                .remove([uploadedPath]);
+
+            if (removeError) {
+                console.error("Erreur lors de la suppression de la nouvelle image :", removeError);
+            }
+        }
 
         return res.status(500).json({
-            message: "Erreur interne du serveur."
+            message: "Erreur lors de la modification de l’œuvre."
         });
     }
 };
-
 
 export const deleteProduct = async (req, res) => {
     try {
